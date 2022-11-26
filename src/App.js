@@ -1,12 +1,8 @@
+import MainRouter from './Router';
 import './App.styles.scss';
-import Homepage from './Pages/Home/Homepage.component';
 
-const App = () =>{
-  return (
-    <>
-      <Homepage/>
-    </>
-  );
-}
+const App = () => {
+	return <MainRouter />;
+};
 
 export default App;
