@@ -2,7 +2,11 @@ import MainRouter from './Router';
 import './App.styles.scss';
 
 const App = () => {
-	return <MainRouter />;
+	return (
+		<>
+			<MainRouter />
+		</>
+	);
 };
 
 export default App;
