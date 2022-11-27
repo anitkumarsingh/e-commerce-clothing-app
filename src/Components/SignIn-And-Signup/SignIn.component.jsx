@@ -11,17 +11,16 @@ class SignIn extends React.Component {
 			email: '',
 			password: ''
 		};
-		
 	}
-  onSubmitHandler = (e) => {
-    e.preventDefault();
-    this.setState({ email: '', password: '' });
-  };
-  onChangeHandler = (e) => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-    console.log(this.state);
-  };
+	onSubmitHandler = (e) => {
+		e.preventDefault();
+		this.setState({ email: '', password: '' });
+	};
+	onChangeHandler = (e) => {
+		const { name, value } = e.target;
+		this.setState({ [name]: value });
+		console.log(this.state);
+	};
 	render() {
 		const { email, password } = this.state;
 		return (
@@ -35,7 +34,7 @@ class SignIn extends React.Component {
 						required
 						value={email}
 						name='email'
-            label='Email'
+						label='Email'
 						onChange={this.onChangeHandler}
 					/>
 					<FormInput
@@ -44,12 +43,15 @@ class SignIn extends React.Component {
 						required
 						value={password}
 						name='password'
-            label='Password'
+						label='Password'
 						onChange={this.onChangeHandler}
 					/>
-					
-					<CustomButton type='submit'>Sign In</CustomButton>
-					<CustomButton onClick={signInWithGoogle}>Sign In With Google</CustomButton>
+					<div className='buttons'>
+						<CustomButton type='submit'>Sign In</CustomButton>
+						<CustomButton onClick={signInWithGoogle} isGoogleSignIn>
+							Sign In With Google
+						</CustomButton>
+					</div>
 				</form>
 			</div>
 		);
