@@ -21,7 +21,8 @@ class App extends React.Component {
 	}
 
 	render() {
-		return <MainRouter />;
+		const {currentUser} = this.state;
+		return <MainRouter currentUser={currentUser}/>;
 	}
 }
 
