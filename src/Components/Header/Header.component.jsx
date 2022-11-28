@@ -8,7 +8,6 @@ import CartDropdown from '../Cart-Dropdown/Cart-Dropdown.component';
 import toggleCartHidden from '../../Redux/Actions/Cart/cart';
 
 const Header = ({ signInUser, cartStatus }) => {
-	console.log('header', cartStatus);
 	return (
 		<div className='header'>
 			<Link className='logo-container' to='/'>
