@@ -5,8 +5,10 @@ import { auth } from '../../Firebase/Firebase.utils';
 import { connect } from 'react-redux';
 import CartIcon from '../Cart-Icon/Cart-Icon.component';
 import CartDropdown from '../Cart-Dropdown/Cart-Dropdown.component';
+import toggleCartHidden from '../../Redux/Actions/Cart/cart';
 
-const Header = ({ signInUser }) => {
+const Header = ({ signInUser, cartStatus }) => {
+	console.log('header', cartStatus);
 	return (
 		<div className='header'>
 			<Link className='logo-container' to='/'>
@@ -28,15 +30,16 @@ const Header = ({ signInUser }) => {
 						Sign In
 					</Link>
 				)}
-				<CartIcon/>
+				<CartIcon />
 			</div>
-			<CartDropdown/>
+			{cartStatus && <CartDropdown />}
 		</div>
 	);
 };
 
 const mapStateToProps = (state) => ({
-	signInUser: state.user.currentUser
+	signInUser: state.user.currentUser,
+	cartStatus: state.toggleCart.hidden
 });
 
 export default connect(mapStateToProps)(Header);
