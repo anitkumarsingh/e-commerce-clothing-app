@@ -1,11 +1,12 @@
+import {ACTIONS} from '../../Actions';
+
 const INITIAL_STATE = {
 	currentUser: null
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
-  console.log('acsssa',action.payload)
 	switch (action.type) {
-		case 'SET_CURRENT_USER':
+		case ACTIONS.SET_CURRENT_USER:
 			return {
 				...state,
 				currentUser: action.payload
