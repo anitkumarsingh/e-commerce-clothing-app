@@ -2,18 +2,16 @@ import React from 'react';
 import MainRouter from './Router';
 import { auth } from './Firebase/Firebase.utils';
 import './App.styles.scss';
+import { connect } from 'react-redux';
+import { setCurrentUser } from './Redux/Actions/User/user';
 
 class App extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			currentUser: null
-		};
-	}
 	unSubcribeFromAuth = null;
 	componentDidMount() {
+		const { setCurrentUser } = this.props;
 		this.unSubcribeFromAuth = auth.onAuthStateChanged((user) => {
-			this.setState({ currentUser: user });
+			console.log(user)
+			setCurrentUser(user)
 		});
 	}
 	componentWillUnmount() {
@@ -21,9 +19,12 @@ class App extends React.Component {
 	}
 
 	render() {
-		const {currentUser} = this.state;
-		return <MainRouter currentUser={currentUser}/>;
+		return <MainRouter  />;
 	}
 }
 
-export default App;
+const mapDispatchToProps = (dispatch)=>({
+	setCurrentUser:user =>dispatch(setCurrentUser(user))
+})
+
+export default connect(null,mapDispatchToProps)(App);

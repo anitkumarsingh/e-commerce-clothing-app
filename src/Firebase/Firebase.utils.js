@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import {getFirestore} from 'firebase/firestore'
+import { getFirestore } from 'firebase/firestore';
+import { getDatabase } from "firebase/database";
 
 
 const config = {
@@ -11,11 +13,16 @@ const config = {
   storageBucket: "clothing-app-c6a82.appspot.com",
   messagingSenderId: "932597096295",
   appId: "1:932597096295:web:438ed74b168e3a991799c2",
-  measurementId: "G-53FL6E7CFY"
+  measurementId: "G-53FL6E7CFY",
+  databaseURL: "https://clothing-app-c6a82-default-rtdb.firebaseio.com/",
 }
+
 // Initialize Firebase
 const app = initializeApp(config);
 // const analytics = getAnalytics(app);
+
+// Initialize Realtime Database and get a reference to the service
+export const database = getDatabase(app);
 
 export const auth = getAuth(app);
 
@@ -30,7 +37,6 @@ export const signInWithGoogle = () =>signInWithPopup(auth, provider)
   const token = credential.accessToken;
   // The signed-in user info.
   const user = result.user;
-  console.log('token',token,user)
   // ...
 }).catch((error) => {
   // Handle Errors here.

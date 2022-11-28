@@ -2,6 +2,7 @@ import './Header.styles.scss';
 import { ReactComponent as Logo } from '../../Assets/logo.svg';
 import { Link } from 'react-router-dom';
 import { auth } from '../../Firebase/Firebase.utils';
+import { connect } from 'react-redux';
 
 const Header = ({ signInUser }) => {
 	return (
@@ -21,11 +22,17 @@ const Header = ({ signInUser }) => {
 						Sign Out
 					</div>
 				) : (
-					<Link className='option' to='/sign'>Sign In</Link>
+					<Link className='option' to='/sign'>
+						Sign In
+					</Link>
 				)}
 			</div>
 		</div>
 	);
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+	signInUser: state.user.currentUser
+});
+
+export default connect(mapStateToProps)(Header);

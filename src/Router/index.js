@@ -4,9 +4,9 @@ import Homepage from '../Pages/Home/Homepage.component';
 import Shop from '../Pages/Shop/Shop.component';
 import SignInAndSignUP from '../Pages/Sign-in-and-Signup/Sign-in-and-Signup.component';
 
-const MainRouter = ({currentUser}) => (
+const MainRouter = () => (
 	<>
-		<Header signInUser={currentUser}/>
+		<Header />
 		<Switch>
 			<Route exact path='/' component={Homepage} />
 			<Route path='/shop' component={Shop} />
