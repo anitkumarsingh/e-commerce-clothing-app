@@ -1,7 +1,8 @@
 import { ACTIONS } from '../../Actions';
 
 const INITIAL_STATE = {
-	hidden: true
+	hidden: true,
+  addItems:[]
 };
 
 const cartReducers = (state = INITIAL_STATE, action) => {
@@ -11,6 +12,11 @@ const cartReducers = (state = INITIAL_STATE, action) => {
 				...state,
 				hidden: !state.hidden
 			};
+    case ACTIONS.ADD_TO_CART:
+    return{
+      ...state,
+      addItems:[...state.addItems,action.payload]
+    }
 
 		default:
 			return state;
