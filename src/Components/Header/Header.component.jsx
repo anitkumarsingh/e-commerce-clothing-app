@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { auth } from '../../Firebase/Firebase.utils';
 import { connect } from 'react-redux';
 import CartIcon from '../Cart-Icon/Cart-Icon.component';
+import CartDropdown from '../Cart-Dropdown/Cart-Dropdown.component';
 
 const Header = ({ signInUser }) => {
 	return (
@@ -29,6 +30,7 @@ const Header = ({ signInUser }) => {
 				)}
 				<CartIcon/>
 			</div>
+			<CartDropdown/>
 		</div>
 	);
 };
