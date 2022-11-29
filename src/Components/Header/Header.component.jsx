@@ -5,7 +5,7 @@ import { auth } from '../../Firebase/Firebase.utils';
 import { connect } from 'react-redux';
 import CartIcon from '../Cart-Icon/Cart-Icon.component';
 import CartDropdown from '../Cart-Dropdown/Cart-Dropdown.component';
-import toggleCartHidden from '../../Redux/Actions/Cart/cart';
+
 
 const Header = ({ signInUser, cartStatus }) => {
 	return (
