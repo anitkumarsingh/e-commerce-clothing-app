@@ -5,6 +5,8 @@ import { auth } from '../../Firebase/Firebase.utils';
 import { connect } from 'react-redux';
 import CartIcon from '../Cart-Icon/Cart-Icon.component';
 import CartDropdown from '../Cart-Dropdown/Cart-Dropdown.component';
+import { selectCurrentUser } from '../../Redux/Selectors/User';
+import { selectHiddenCartStatus } from '../../Redux/Selectors/Cart';
 
 
 const Header = ({ signInUser, cartStatus }) => {
@@ -37,8 +39,8 @@ const Header = ({ signInUser, cartStatus }) => {
 };
 
 const mapStateToProps = (state) => ({
-	signInUser: state.user.currentUser,
-	cartStatus: state.toggleCart.hidden
+	signInUser: selectCurrentUser(state),
+	cartStatus: selectHiddenCartStatus(state)
 });
 
 export default connect(mapStateToProps)(Header);
