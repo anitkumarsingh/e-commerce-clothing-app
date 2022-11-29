@@ -3,7 +3,7 @@ import { addItemToCart } from '../../Utility/Cart';
 
 const INITIAL_STATE = {
 	hidden: true,
-  addItems:[]
+	addItems: []
 };
 
 const cartReducers = (state = INITIAL_STATE, action) => {
@@ -13,12 +13,16 @@ const cartReducers = (state = INITIAL_STATE, action) => {
 				...state,
 				hidden: !state.hidden
 			};
-    case ACTIONS.ADD_TO_CART:
-    return{
-      ...state,
-      addItems:addItemToCart(state.addItems,action.payload)
-    }
-
+		case ACTIONS.ADD_TO_CART:
+			return {
+				...state,
+				addItems: addItemToCart(state.addItems, action.payload)
+			};
+		case ACTIONS.REMOVE_ITEM_FROM_CART:
+			return {
+				...state,
+				addItems: state.addItems.filter((item) => item.id !== action.payload.id)
+			};
 		default:
 			return state;
 	}
