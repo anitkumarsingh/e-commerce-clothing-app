@@ -6,15 +6,23 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import {store,persistor} from './Redux/Store';
+import { store, persistor } from './Redux/Store';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { BASE_URL } from './Constants';
 
+const client = new ApolloClient({
+	uri: `${BASE_URL}`,
+	cache: new InMemoryCache()
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<Provider store={store}>
 		<BrowserRouter>
 			<PersistGate persistor={persistor}>
-				<App />
+				<ApolloProvider client={client}>
+					<App />
+				</ApolloProvider>
 			</PersistGate>
 		</BrowserRouter>
 	</Provider>
