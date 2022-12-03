@@ -10,9 +10,11 @@ import { selectHiddenCartStatus } from '../../Redux/Selectors/Cart';
 import { createStructuredSelector } from 'reselect';
 import { useContext } from 'react';
 import { CurrentUser } from '../../Context/Current-User/Current-User';
+import { CartContext } from '../../Context/Cart/Cart';
 
 const Header = ({ cartStatus }) => {
-	const signInUser = useContext(CurrentUser)
+	const signInUser = useContext(CurrentUser);
+	const {hidden} = useContext(CartContext);
 	return (
 		<div className='header'>
 			<Link className='logo-container' to='/'>
@@ -36,7 +38,7 @@ const Header = ({ cartStatus }) => {
 				)}
 				<CartIcon />
 			</div>
-			{cartStatus && <CartDropdown />}
+			{hidden && <CartDropdown />}
 		</div>
 	);
 };
