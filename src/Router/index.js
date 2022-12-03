@@ -4,6 +4,7 @@ import Homepage from '../Pages/Home/Homepage.component';
 import Shop from '../Pages/Shop/Shop.component';
 import Checkout from '../Pages/Checkout/Checkout.component';
 import SignInAndSignUP from '../Pages/Sign-in-and-Signup/Sign-in-and-Signup.component';
+import Collections from '../Pages/Collection/Collections.component';
 import { connect } from 'react-redux';
 
 const MainRouter = ({ currentUser }) => {
@@ -14,6 +15,7 @@ const MainRouter = ({ currentUser }) => {
 				<Route exact path='/' component={Homepage} />
 				<Route path='/shop' component={Shop} />
 				<Route exact path='/checkout' component={Checkout} />
+				<Route exact path="/collections/:title" component={Collections}/>
 				<Route
 					exact
 					path='/sign'
