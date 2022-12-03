@@ -5,10 +5,12 @@ import Shop from '../Pages/Shop/Shop.component';
 import Checkout from '../Pages/Checkout/Checkout.component';
 import SignInAndSignUP from '../Pages/Sign-in-and-Signup/Sign-in-and-Signup.component';
 import Collections from '../Pages/Collection/Collections.component';
-import { connect } from 'react-redux';
 import CollectionConsumer from '../Pages/Collection/Collection-Consumer';
+import { useContext } from 'react';
+import { CurrentUser } from '../Context/Current-User/Current-User';
 
-const MainRouter = ({ currentUser }) => {
+const MainRouter = () => {
+	const currentUser = useContext(CurrentUser);
 	return (
 		<>
 			<Header />
@@ -28,6 +30,4 @@ const MainRouter = ({ currentUser }) => {
 	);
 };
 
-const mapStateToProps = (state) => ({ currentUser: state.user.currentUser });
-
-export default connect(mapStateToProps, null)(MainRouter);
+export default MainRouter;

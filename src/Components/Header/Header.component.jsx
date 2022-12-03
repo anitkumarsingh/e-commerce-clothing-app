@@ -8,8 +8,11 @@ import CartDropdown from '../Cart-Dropdown/Cart-Dropdown.component';
 import { selectCurrentUser } from '../../Redux/Selectors/User';
 import { selectHiddenCartStatus } from '../../Redux/Selectors/Cart';
 import { createStructuredSelector } from 'reselect';
+import { useContext } from 'react';
+import { CurrentUser } from '../../Context/Current-User/Current-User';
 
-const Header = ({ signInUser, cartStatus }) => {
+const Header = ({ cartStatus }) => {
+	const signInUser = useContext(CurrentUser)
 	return (
 		<div className='header'>
 			<Link className='logo-container' to='/'>
